@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE configuration   PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN"   "http://ibatis.apache.org/dtd/ibatis-3-config.dtd">
+<configuration>
+	
+	<!-- 配置属性，复用 -->
+	<properties>
+		<property name="driver" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/test"/>
+		<property name="username" value="root"/>
+		<property name="password" value="123456"/>
+	</properties>
+	
+	<!-- <settings>
+		开启二级缓存
+		<setting name="cacheEnabled" value="true"/>
+	</settings>
+	
+	定义类型的别名
+	<typeAliases>
+		<typeAlias alias="Emp" type="com.aptech.ems.model.Emp" />
+	</typeAliases> -->
+	
+	<typeAliases>
+		<typeAlias type="com.dev.model.User" alias="user"/>
+		<package name="com.dev.model"/>
+	</typeAliases>
+	
+	
+	<!-- 配置映射列表 -->
+	<mappers>
+		<mapper resource="com/mybatis/dao/UserMapper.xml"/>
+	</mappers>
+	
+</configuration>
