@@ -3,6 +3,9 @@ package com.dev.ctrl;
 import com.dev.model.TbUserLoginPO;
 import com.dev.model.User;
 import com.dev.service.UserService;
+
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,8 +18,13 @@ public class LoginCtrl {
     @Resource
     private UserService userService;
 
+    @Resource
+    private DiscoveryClient client;
+    
     @RequestMapping("/index.html")
     public String index(){
+    	ServiceInstance instance = client.getLocalServiceInstance();
+    	System.out.println(instance.getHost()+","+instance.getServiceId());
         return "login";
     }
 
